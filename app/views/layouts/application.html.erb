@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <!-- Bootstrap Core CSS -->
+  <link href="//blackrockdigital.github.io/startbootstrap-clean-blog/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="//blackrockdigital.github.io/startbootstrap-clean-blog/css/clean-blog.min.css" rel="stylesheet">
+  <!-- Custom Fonts -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  
+  <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+</head>
+<body>
+  
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">사자우리</a>
+        </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <% if user_signed_in? %>
+                  <li>
+                    <a href="/post/new">모임 만들기</a>
+                  </li>
+                  <li><%= image_tag(current_user.image, size: '40x40', style:'border-radius:3px;margin-top: 8px;') if current_user.image %></li>
+                  <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: {confirm: "정말 로그아웃 하시겠습니까?" }%></li>
+                <% else %>
+                  <li><%= link_to "페이스북으로 로그인", user_omniauth_authorize_path(:facebook) %></li>
+                <% end %>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<%= yield %>
+
+<!-- Footer -->
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          <li>
+            <a href="https://www.facebook.com/likelionkonkuk/">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="http://konkuk.likelion.net/">
+              <span class="fa-stack fa-lg">
+                <i style="color: white;position: absolute;left: 12px;z-index: 2;font-size: small;font-weight: bold;">www</i>
+                <i class="fa fa-circle fa-stack-2x"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; LikeLion Konkuk 2016</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- jQuery -->
+    <script src="//blackrockdigital.github.io/startbootstrap-clean-blog/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="//blackrockdigital.github.io/startbootstrap-clean-blog/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="//blackrockdigital.github.io/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

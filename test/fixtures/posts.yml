@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  region: MyString
+  day: MyString
+  purpose: MyString
+  people: 1
+  dday: 1
+  content: MyText
+
+two:
+  title: MyString
+  region: MyString
+  day: MyString
+  purpose: MyString
+  people: 1
+  dday: 1
+  content: MyText

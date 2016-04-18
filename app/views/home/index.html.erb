@@ -1,0 +1,54 @@
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('/assets/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>사자우리</h1>
+                    <hr class="small">
+                    <span class="subheading">함께할 우리를 만들어보아요</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<% if user_signed_in? %>
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      <% @post.each do |a| %>
+        <div class="post-preview">
+          <a href="/post/show/<%= a.id %>">
+            <h2 class="post-title">
+              <%= a.title %> 
+            </h2>
+            <h3 class="post-subtitle">
+              지역구 : <%= a.region %> / 모임 목적 : <%= a.purpose %> / 모집 기간 : <%= (a.created_at + (a.dday*86400)).year %>년 <%= (a.created_at + (a.dday*86400)).month %>월 <%= (a.created_at + (a.dday*86400)).day %>일
+            </h3>
+          </a>
+          <p class="post-meta">Posted by <%= User.find(a.user_id).name %> on <%= a.created_at.year %>.<%= a.created_at.month %>.<%= a.created_at.day %></p>
+        </div>
+        <hr>
+      <% end %>
+      
+      <%= will_paginate @post%>
+      
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    
+      <h2 style=margin-bottom:50px>페이스북으로 로그인해주세요!</h2>
+
+    </div>
+  </div>
+</div>
+<% end %>
+
+<hr>
