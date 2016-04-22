@@ -50,9 +50,12 @@
             </ul>
         </div>
         <!-- /.navbar-collapse -->
+        <%= render partial: "shared/flash_messages", flash: flash %>
     </div>
     <!-- /.container -->
 </nav>
+
+
 
 <%= yield %>
 

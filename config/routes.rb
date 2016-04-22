@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :posts do
+    resources :comments, only: [:create, :destroy]
+  end
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   match ":controller(/:action(/:id))", :via => [:post, :get]
   root :to => 'home#index'
