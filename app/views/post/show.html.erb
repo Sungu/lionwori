@@ -14,27 +14,6 @@
 
 <div class="container">
   <div class="row">
-    
-    <!--<div>
-      <h1><%= @post.title %><small>by <%= User.find(@post.user_id).name %></small></h1>
-      <h4>모임 설명 : <%= simple_format(@post.content) %></h4>
-      <br><br>
-      <h3>현재 참여 인원 : <%= (@post.applicants.count)%>/<%= @post.people %></h3>
-      <% if @post.applicants.where(user_id: current_user.id)==[] %>
-        <%= form_tag "/post/add_applicant", method: "post" do %>
-          <input type="hidden" name="post_id" value="<%= @post.id %>" >
-          <br>
-          <p><button class="btn btn-lg btn-success" href="#" role="button">모임 참가하기</button></p>
-        <% end %>
-      <% else %>
-        <%= form_tag "/post/del_applicant", method: "post" do %>
-          <input type="hidden" name="post_id" value="<%= @post.id %>" >
-          <br>
-          <p><button class="btn btn-lg btn-success" href="#" role="button">참가 취소</button></p>
-        <% end %>
-      <% end %>
-    </div>-->
-    
     <div style="clear:right;float:left;width:50%;height:50%;padding:10px">
       <h4>by <%= User.find(@post.user_id).name %></h4>
     </div>
@@ -54,6 +33,28 @@
  
     <div style="float:left;width:100%;height:50%;padding:10px">
       <h4>모임 설명 : <%= simple_format(@post.content) %></h4>
+    </div>
+    
+    <div style="float:left;width:100%;height:50%;padding:10px">
+      <% if @post.applicants.where(user_id: current_user.id)==[] %>
+        <%= form_tag "/post/add_applicant", method: "post" do %>
+          <input type="hidden" name="post_id" value="<%= @post.id %>" >
+          <br>
+          <p><button class="btn btn-lg btn-success" href="#" role="button">모임 참가하기</button></p>
+        <% end %>
+      <% else %>
+        <%= form_tag "/post/del_applicant", method: "post" do %>
+          <input type="hidden" name="post_id" value="<%= @post.id %>" >
+          <br>
+          <p><button class="btn btn-lg btn-success" href="#" role="button">참가 취소</button></p>
+        <% end %>
+      <% end %>
+      <h3>현재 참여 인원 : <%= (@post.applicants.count)%>/<%= @post.people %></h3>
+      <% @post.applicants.each do |a| %>
+        <div class="photo">
+      		<div class="avatar" style="background-image: url('<%= User.find(a.user_id).image %>')"></div>
+      	</div>
+      <% end %>
     </div>
 
 
