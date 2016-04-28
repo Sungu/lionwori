@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
