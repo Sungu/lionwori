@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+gem 'fog'
+gem 'carrierwave'
 gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
