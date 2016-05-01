@@ -15,7 +15,7 @@
 			<ul class="comment-actions">
         <% if comment.user_id == current_user.id %>
         	<li><%= link_to "삭제", [comment.post, comment], method: :delete, remote: true, data: { confirm: "Are you sure?" } %></li>
-        	<li><%= link_to "수정","/comment/update/#{comment.id}" %></li>
+        	<!--<li><%= link_to "수정","/comment/update/#{comment.id}" %></li>-->
         <% end %>
       </ul>
     </div>
