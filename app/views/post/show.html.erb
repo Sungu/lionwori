@@ -1,61 +1,84 @@
-<header class="intro-header" style="background-image: url('//s3.ap-northeast-2.amazonaws.com/sungurails/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>모임 둘러보기</h1>
-                    <hr class="small">
-                    <span class="subheading">이 모임이 마음에 드시나요?</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <!--link rel="stylesheet" type="text/css" href="show.css"-->
+  <style type="text/css">
+    
+  </style>
+  <header class="intro-header" style="background-image: url('//s3.ap-northeast-2.amazonaws.com/sungurails/home-bg.jpg')">
+      <div class="container">
+          <div class="row">
+              <div>
+                  <div class="site-heading">
+                      <h1><%= @post.title %></h1>
+                      <hr class="small">
+                      <span class="subheading">by&nbsp;<%= User.find(@post.user_id).name %></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+</head>
 
-<div class="container text-center">
-  <div class="row">
-    <div>
-      <h1><%= @post.title %> <small>by <%= User.find(@post.user_id).name %></small></h1>
-      <h3>지역구 : <%= @post.region %></h3>
-      <% if @post.day == "option1" %>
-        <h3>모임 요일 : 평일 중심</h3>
-      <% elsif @post.day == "option2" %>
-        <h3>모임 요일 : 주말 중심</h3>
-      <% else %>
-        <h3>모임 요일 : 협의 후 결정</h3>
-      <% end %>
-      <h3>모집 기간 : <%= (@post.created_at + (@post.dday*86400)).year %>년 <%= (@post.created_at + (@post.dday*86400)).month %>월 <%= (@post.created_at + (@post.dday*86400)).day %>일</h3>
-      <h3>모임 목적 : <%= @post.purpose %></h3>
-      <h4>모임 설명 : <%= simple_format(@post.content) %></h4>
-      <br><br>
-      <h3>현재 참여 인원 : <%= (@post.applicants.count)%>/<%= @post.people %></h3>
-      <% if @post.applicants.where(user_id: current_user.id)==[] %>
-        <%= form_tag "/post/add_applicant", method: "post" do %>
-          <input type="hidden" name="post_id" value="<%= @post.id %>" >
-          <br>
-          <p><button class="btn btn-lg btn-success" href="#" role="button">모임 등록</button></p>
+<body>
+  <div class= "container text-center">
+    <div class="row">
+      <div>
+        <!--h1><%= @post.title %> <small>by <%= User.find(@post.user_id).name %></small></h1-->
+        <h3>지역구 : <%= @post.region %></h3>
+        <% if @post.day == "option1" %>
+          <h3>모임 요일 : 평일 중심</h3>
+        <% elsif @post.day == "option2" %>
+          <h3>모임 요일 : 주말 중심</h3>
+        <% else %>
+          <h3>모임 요일 : 협의 후 결정</h3>
         <% end %>
-      <% else %>
-        <%= form_tag "/post/del_applicant", method: "post" do %>
-          <input type="hidden" name="post_id" value="<%= @post.id %>" >
-          <br>
-          <p><button class="btn btn-lg btn-success" href="#" role="button">등록 해제</button></p>
-        <% end %>
-      <% end %>
-    </div>
-    
-    <div class="comments" style="margin-left: auto; margin-right: auto;">
-	
-      <%= render "comments/comments" %>
-    
-    </div>
-    
-    <% if current_user.id == @post.user_id %>
-      <%= link_to '수정', "/post/edit/#{@post.id}", class: 'btn btn-default' %>
-      <%= link_to '삭제', "/post/destroy/#{@post.id}", class: 'btn btn-default' %>
-    <% end %>
-    <%= link_to '뒤로가기', '/home/index', class: 'btn btn-default' %>
-    <div style="margin-bottom:40px;">
+        <h3>모집 기간 : <%= (@post.created_at + (@post.dday*86400)).year %>년 <%= (@post.created_at + (@post.dday*86400)).month %>월 <%= (@post.created_at + (@post.dday*86400)).day %>일</h3>
+        <h3>모임 목적 : <%= @post.purpose %></h3>
+        <h3>모임 설명 : <%= simple_format(@post.content) %></h3>
+        <br><br>
+        
+        
+      </div>
     </div>
   </div>
-</div>
+        
+  <div class="container text-center" >
+    <div class="row">
+      <div>
+        <h3>현재 참여 인원 : <%= (@post.applicants.count)%>/<%= @post.people %></h3>
+        <% if @post.applicants.where(user_id: current_user.id)==[] %>
+          <%= form_tag "/post/add_applicant", method: "post" do %>
+            <input type="hidden" name="post_id" value="<%= @post.id %>" >
+            <br>
+            <p><button class="btn btn-lg btn-success" href="#" role="button">모임 등록</button></p>
+          <% end %>
+        <% else %>
+          <%= form_tag "/post/del_applicant", method: "post" do %>
+            <input type="hidden" name="post_id" value="<%= @post.id %>" >
+            <br>
+            <p><button class="btn btn-lg btn-success" href="#" role="button">등록 해제</button></p>
+          <% end %>
+        <% end %>
+      </div>
+      
+      <div class="comments" style="margin-left: auto; margin-right: auto;">
+  	
+        <%= render "comments/comments" %>
+      
+      </div>
+      
+      <% if current_user.id == @post.user_id %>
+        <%= link_to '수정', "/post/edit/#{@post.id}", class: 'btn btn-default' %>
+        <%= link_to '삭제', "/post/destroy/#{@post.id}", class: 'btn btn-default' %>
+      <% end %>
+      <%= link_to '뒤로가기', '/home/index', class: 'btn btn-default' %>
+      <div style="margin-bottom:40px;">
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

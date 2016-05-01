@@ -16,6 +16,22 @@
   <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   
   <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
+  <!--style type="text/css">
+    #d1{
+      @media screen and (max-aspect-ratio: 16/9){
+        padding-right: "0px;"
+      }
+    
+    #d2{
+      @media screen and (min-aspect-ratio: 16/9)
+        padding-left: "17px;"
+      }
+    }
+    
+  }
+  </style-->
+
 </head>
 <body>
   
@@ -30,7 +46,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">사자우리</a>
+        
+            <a class="navbar-brand" id: "d1" href="/">
+              <img border="0" alt="LikeLionWori" src="1.png" width="24" height="24" style= "padding-right: 2px;">
+            </a>
+            
+            <a class="navbar-brand" href="/" id="d2" style="padding-left: 0px;">사자우리</a>
         </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
