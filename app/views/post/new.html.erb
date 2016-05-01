@@ -13,14 +13,43 @@
 </header>
 
 <div class="container">
-  <%= form_tag "/post/create", method: "post" do %>
+  <%= form_tag "/post/create",multipart: true, method: "post" do %>
     <div class="form-group">
       <label>모임 이름</label>
       <input name="title" type="text" class="form-control" placeholder="재밌는 이름을 지어주세요">
     </div>
     <div class="form-group">
       <label>지역구</label>
-      <input name="region" type="text" class="form-control" placeholder="(ex)광진구,성동구,서대문구">
+      <div style="border: 1px solid #EAEAEA;margin-bottom:10px;padding:10px">
+        <ul style="list-style:none;display:inline-block;margin-bottom:0">
+         <li class="gu-list" ><a class="gu" href="#" onclick="setgu('강남구');return false;">강남구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('강동구');return false;">강동구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('강북구');return false;">강북구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('강서구');return false;">강서구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('관악구');return false;">관악구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('광진구');return false;">광진구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('구로구');return false;">구로구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('금천구');return false;">금천구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('노원구');return false;">노원구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('도봉구');return false;">도봉구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('동대문구');return false;">동대문구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('동작구');return false;">동작구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('마포구');return false;">마포구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('서대문구');return false;">서대문구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('서초구');return false;">서초구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('성동구');return false;">성동구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('성북구');return false;">성북구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('송파구');return false;">송파구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('양천구');return false;">양천구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('영등포구');return false;">영등포구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('용산구');return false;">용산구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('은평구');return false;">은평구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('종로구');return false;">종로구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('중구');return false;">중구</a></li>
+          <li class="gu-list" ><a class="gu" href="#" onclick="setgu('중랑구');return false;">중랑구</a></li>
+          </ul>
+      </div>
+      <input name="region" type="tag_list" id="gu-text" class="form-control" placeholder="지역을 선택해 주세요" >
     </div>
     <div class="form-group">
       <label>모임 시간대</label>
@@ -81,8 +110,23 @@
       <label>모임 설명</label>
       <textarea name="content" class="form-control" rows="7"></textarea>
     </div>
+    
+    <div class="form-group">
+      <label>대문 사진</label>
+      <input name="img" type="file" class="form-control">
+    </div>
+    
     <div class="text-center">
     <button style="margin-bottom: 30px; margin-top: 20px;" class="btn btn-default">작성하기</button>
     </div>
   <% end %>
 </div>
+<script>
+function setgu(x){
+       var gu_text=$("#gu-text").val();
+        if(gu_text)
+         $("#gu-text").val(gu_text+","+x);
+        else
+        $("#gu-text").val(x);
+      }
+</script>

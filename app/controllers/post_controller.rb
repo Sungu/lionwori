@@ -15,7 +15,8 @@ class PostController < ApplicationController
                     people: params[:people],
                     dday: params[:dday],
                     content: params[:content],
-                    user_id: current_user.id)
+                    user_id: current_user.id,
+                    img: params[:img])
     flash[:notice] = "글이 작성 되었습니다"
     redirect_to "/post/show/#{a.id}"
   end
@@ -34,6 +35,7 @@ class PostController < ApplicationController
       a.people = params[:people]
       a.dday =  params[:dday]
       a.content = params[:content]
+      a.img = params[:img]
       a.save
       flash[:notice] = "글이 수정 되었습니다"
       redirect_to "/post/show/#{a.id}"

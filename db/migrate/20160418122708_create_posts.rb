@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :people
       t.integer :dday
       t.text :content
+      t.string :img
       
       t.references :user, index: true, foreign_key: true
 
