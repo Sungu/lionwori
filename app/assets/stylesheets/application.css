@@ -14,11 +14,14 @@
  *= require_self
  */
 
+
+
 html, body {
   background-color: #f0f2fa;
-  font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial",'Nanum Gothic', serif;
   color: #555f77;
   -webkit-font-smoothing: antialiased;
+  
 }
 
 input, textarea {
@@ -221,12 +224,12 @@ p {
   margin: 0;
   padding: 0 0 10px;
   color: #333333;
-  font-size: 26px;
+  font-size: 40px;
   font-weight: 700;
 }
 .post-module .post-content .sub_title {
   margin: 0;
-  padding: 0 0 20px;
+  padding: 0 0 0px;
   color: #e74c3c;
   font-size: 20px;
   font-weight: 400;
@@ -310,3 +313,6 @@ strong{
 helloo{
   font-weight: bold;
 }
+
+
+

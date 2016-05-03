@@ -3,7 +3,7 @@
 
 <link rel="shortcut icon" href="favicon.ico">
 
-<header class="intro-header" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/sungurails/lion-515028_1920.jpg')">
+<header class="intro-header" style="background-image: url('https://s3.ap-northeast-2.amazonaws.com/sungurails/lion-515028_1920.jpg'); font-family: 'Nanum Gothic';">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -18,7 +18,7 @@
 </header>
 <% if user_signed_in? %>
 
-<div class="container">
+<div class="container" style="font-family: 'Nanum Gothic', serif;">
   <!-- Normal Demo-->
   <div class="row">
     <% @post.each do |a| %>
@@ -37,9 +37,9 @@
             <div class="post-content">
               <div class="category">By <%= User.find(a.user_id).name %></div>
               <h1 class="title text-center"><%= a.title %></h1>
-              <h2 class="sub_title text-center"><%= a.region %></h2>
-              <p class="description text-center"><strong><%= a.purpose %></strong><br><%= (a.applicants.count)%>/<%= a.people %></p>
-              <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-"></i><%=time_ago_in_words(a.created_at)%> ago</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> <%= a.comments.count %> comments</a></span></div>
+              <h2 class="sub_title text-center" style="font-weight:bold"><%= a.region %></h2>
+              <p class="description text-center"style="font-weight:bold"><strong><%= a.purpose %></strong><br><%= (a.applicants.count)%>/<%= a.people %></p>
+              <div class="post-meta"><span class="timestamp"><i class="fa fa-clock-o" style="margin-right:15px"></i><%=time_ago_in_words(a.created_at)%> ago</span><span class="comments"><i class="fa fa-comments"></i><a href="#"> <%= a.comments.count %> comments</a></span></div>
             </div>
           </div>
         </a>

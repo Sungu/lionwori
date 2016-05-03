@@ -1,15 +1,16 @@
-<header class="intro-header" style="background-image: url('<%= @post.img.url %>')"
+<header class="intro-header" style="background-image: url('<%= @post.img.url %>')">
+  <div style="background: rgba(0,0,0, 0.3);">
     <div class="container">
-        <div class="row">
-            <div>
-                <div class="site-heading">
-                    <h1><%= @post.title %></h1>
-                    <hr class="small">
-                    <span class="subheading">by&nbsp;<%= User.find(@post.user_id).name %></span>
-                </div>
-            </div>
+      <div class="row">
+        <div class="site-heading">
+            <h1><%= @post.title %></h1>
+            <hr class="small">
+            <span class="subheading" style="font-weight:bold;font-size:40px"><%= @post.purpose %></span>
+            <span style="font-weight:bold;margin-top:10px;font-family:'Nanum Gothic';">by <%= User.find(@post.user_id).name %></span>
         </div>
+      </div>
     </div>
+  </div>
 </header>
 
 <div class= "container text-center">
