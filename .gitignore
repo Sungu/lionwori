@@ -15,4 +15,4 @@
 /log/*
 !/log/.keep
 /tmp
-#/config/initializers/fog.rb
+/config/initializers/fog.rb
