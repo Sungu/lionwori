@@ -314,5 +314,9 @@ helloo{
   font-weight: bold;
 }
 
-
-
+.text-name{
+  margin-top: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Nanum Gothic",serif;
+}
